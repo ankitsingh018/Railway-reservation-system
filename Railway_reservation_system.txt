@@ -1,0 +1,90 @@
+Q.1) SQL PROJECT
+
+create table train 
+(
+  
+train_id number primary key,
+  
+train_name varchar(50),  
+
+  train_ticket number, 
+  
+train_type varchar(20)  
+
+) 
+
+
+ 
+insert into train values(110030,'Deccan Express',8457862,'AC'); 
+ 
+insert into train values(110040,'Guwati Express',7458872,'Sleeper');  
+ 
+insert into train values(110050,'Rajhdani Express',9559452,'N0N-AC');  
+
+ insert into train values(110060,'Duranto Express',7827884,'AC');
+
+
+
+ select * from train
+
+ create table booking
+ 
+(
+ 
+ b_id number primary key,
+
+ b_type varchar(20)
+
+ );
+
+ 
+
+insert into booking values(1,'First class');
+
+ insert into booking values(2,'Second class');
+ 
+insert into booking values(3,'unreserved class');
+ 
+
+select * from booking
+
+
+create table customer
+
+(
+
+cus_id  number primary key,
+
+cus_mobile number,
+
+cus_name varchar(20),
+
+cus_email varchar(50),
+
+cus_password number,
+ticket_id number, 
+constraint fk_tickectid foreign key (ticket_id) references train(train_ticket) 
+)
+
+insert into customer values(1,9820759589,'Ankit','ankitsingh@gmail.com',1234,8457862);
+insert into customer values(2,9833817317,'Adarsh','adiisingh@gmail.com',4321,7458872);
+insert into customer values(3,8291182282,'Raj','rajjj@gmail.com',9822,9559452);
+insert into customer values(4,9869791886,'Shivam','shivamyadav@gmail.com',8833,7827884);
+
+select * from customer
+
+
+create table payment
+(
+p_id number primary key,
+p_amount number,
+booking_id number,
+constraint fk_bookingid foreign key (booking_id) references booking(b_id)
+);
+
+
+insert into payment values(1,2000,1);
+insert into payment values(2,4000,2);
+insert into payment values(3,2500,3);
+
+select * from payment
